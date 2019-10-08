@@ -15,6 +15,8 @@
         <tr>
             <td><%= post.title =%></td>
             <td><%= link_to"リンク",post.url =%></td>
+            <td><%= link_to"編集", edit_post_path(post) =%></td>
+            <td><%= link_to"削除", post,method: :delete =%></td>
         </tr>
         <% end %>
     </tbody>
