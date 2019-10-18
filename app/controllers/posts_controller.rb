@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @post=Post.all
+    @post=current_user.tasks
   end
 
   def new
@@ -8,24 +8,24 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post=Post.new(post_params)
+    @post=current_user.posts.new(post_params)
     @post.save
     redirect_to posts_path
   end
 
   def edit
-    @post=Post.find(params[:id])
+    @post=current_user.posts.find(params[:id])
   end
   
   def update
-    @post=Post.find(params[:id])
+    @post=current_user.posts.find(params[:id])
     @post.update(post_params)
     flash[:notice]="投稿しました"
     redirect_to posts_path
   end
   
   def destroy
-    @post=Post.find(params[:id])
+    @post=current_user.posts.find(params[:id])
     @post.destroy
     flash[:notice]="削除しました"
     redirect_to posts_path
