@@ -1,4 +1,21 @@
-<% provide :title,"テスト" %>
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-<%= link_to "新規登録",new_user_path %>
+<% if logged_in? %>
+  <div>
+    <aside>
+      <section>
+        <%= render 'shared/post_form' %>
+      </section>
+    </aside>
+    <div>
+      <h3>Post feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+    <h1>Welcome to urog</h1>
+    <h2>
+      urogは保存しておきたいwebサイトを見やすく保管するためのツールです。
+    </h2>
+    <%= link_to "登録する",new_user_path%>
+    すでにアカウントをお持ちの方はこちら
+    <%= link_to "ログイン",login_path %>
+<% end %>

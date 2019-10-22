@@ -7,10 +7,14 @@ class UsersController < ApplicationController
     if
       @user.save
       log_in @user
-      redirect_to users_path
+      redirect_to root_path
     else
       render :new
     end
+  end
+  def show
+    @user=User.find(params[:id])
+    @posts=@user.posts.paginate(page: params[:page])
   end
 
   def edit
