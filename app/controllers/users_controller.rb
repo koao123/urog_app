@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:destroy]
   def new
     @user=User.new
   end
@@ -12,6 +12,9 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+  def show
+    
   end
 
   def destroy
