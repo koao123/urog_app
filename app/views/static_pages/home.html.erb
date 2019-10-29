@@ -1,5 +1,6 @@
 <% if logged_in? %>
-  <div>
+ <div>
+  <div class="container">
     <aside>
       <section>
         <%= render 'shared/post_form' %>
@@ -9,13 +10,16 @@
       <h3>Post feed</h3>
       <%= render 'shared/feed' %>
     </div>
+   </div>
   </div>
 <% else %>
+   <div class="container">
     <h1>Welcome to urog</h1>
     <h2>
       urogは保存しておきたいwebサイトを見やすく保管するためのツールです。
     </h2>
-    <%= link_to "登録する",new_user_path%>
-    すでにアカウントをお持ちの方はこちら
-    <%= link_to "ログイン",login_path %>
+    <p><%= link_to "登録する",new_user_path%></p>
+    <p>すでにアカウントをお持ちの方は
+    <%= link_to "こちら",login_path %></p>
+   </div>
 <% end %>
