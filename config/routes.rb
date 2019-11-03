@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   resources :users
   resources :posts, only: [:create, :destroy]
+  resources :categories , only: [:create, :destroy]
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete 'logout',to: 'sessions#destroy'

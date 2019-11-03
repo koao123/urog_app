@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }
     has_many :posts, dependent: :destroy
+    has_many :categories, dependent: :destroy
     
     def feed
         Post.where("user_id=?",id)

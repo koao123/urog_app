@@ -10,6 +10,21 @@
       <h3>保存URL</h3>
       <%= render 'shared/feed' %>
     </div>
+    
+　　<div>
+　　 <aside>
+　　  <section>
+        <%= render 'shared/category_form' %>
+      </section>
+     <aside>
+      <h3>カテゴリー</h3>
+      <% @categories.each do |category|  %>
+      <div><%= category.name %>
+      <%= link_to "削除",category, method: :delete,
+                                       data: { confirm: "You sure?" }  %>
+      </div>
+      <% end %>
+    </div>    
    </div>
   </div>
 <% else %>

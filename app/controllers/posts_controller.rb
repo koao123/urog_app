@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post=current_user.posts.find(params[:id])
     @post.destroy
     flash[:notice]="削除しました"
-    redirect_to posts_path
+    redirect_to root_path
   end
   
   private
