@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: aaaaa
-  url: aaaaa
+orange:
+  title: "I just ate an orange!"
+  url: "I just ate an orange!"
+  created_at: <%= 10.minutes.ago %>
 
-two:
-  title: bbbbb
-  url: bbbbb
+most_recent:
+  title: "Writing a short test"
+  url: "Writing a short test"
+  created_at: <%= Time.zone.now %>
