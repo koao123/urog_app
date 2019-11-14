@@ -3,8 +3,13 @@ class CategoriesController < ApplicationController
  
   def create
     @category=current_user.categories.new(category_params)
-    @category.save
-    redirect_to root_path
+    if @category.save
+     flash[:success]="追加しました"
+     redirect_to root_path
+    else
+     flash[:danger]="追加に失敗しました"
+     redirect_to root_path
+    end
   end
   
   def destroy

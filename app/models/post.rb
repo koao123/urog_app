@@ -3,4 +3,5 @@ class Post < ApplicationRecord
     default_scope -> { order(created_at: :desc)}
     validates :user_id, presence: true
     validates :url, presence: true
+    belongs_to :category ,optional: true
 end

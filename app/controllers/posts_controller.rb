@@ -1,9 +1,14 @@
 class PostsController < ApplicationController
 
   def create
-    @post=current_user.posts.new(post_params)
-    @post.save
-    redirect_to root_path
+    @post=current_user.posts.build(post_params)
+    if @post.save
+     flash[:success]="追加しました"
+     redirect_to root_path
+    else
+     flash[:danger]="追加に失敗しました"
+     redirect_to root_path
+    end
   end
   
   def destroy
@@ -15,6 +20,6 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:title,:url)
+    params.require(:post).permit(:title,:url,:user_id,:category_id)
   end
 end

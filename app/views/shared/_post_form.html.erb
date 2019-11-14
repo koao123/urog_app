@@ -1,9 +1,13 @@
-<%= form_for(@post) do |f| %>
+<%= form_with model: @post,local: true do |f| %>
+　<%= render 'shared/error_messages', object: f.object %>
   <div>
     <%= f.text_area :title, placeholder: "text" %>
   </div>
   <div>
     <%= f.text_area :url, placeholder: "url" %>
   </div>
-  <%= f.submit "Post"%>
+  <div>
+    <%= f.collection_select(:category_id,@categories,:id,:name,:prompt => "未選択") %>
+  </div>
+  <%= f.submit "追加"%>
 <% end %>

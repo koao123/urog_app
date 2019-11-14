@@ -4,8 +4,12 @@ orange:
   title: "I just ate an orange!"
   url: "I just ate an orange!"
   created_at: <%= 10.minutes.ago %>
+  user_id: michael
+  category_id: study
 
 most_recent:
   title: "Writing a short test"
   url: "Writing a short test"
   created_at: <%= Time.zone.now %>
+  user_id: michael
+  category_id: life

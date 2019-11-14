@@ -6,11 +6,29 @@
         <%= render 'shared/post_form' %>
       </section>
     </aside>
-    <div>
-      <h3>保存URL</h3>
-      <%= render 'shared/feed' %>
-    </div>
     
+    <%# ここから作る　%>
+    <div>
+     <% @categories.each do |category|  %>
+      <div>
+      <h1><%= category.name %></h1>
+        <% category.posts.each do |f| %>
+         <p><%= link_to f.title,f.url %></p>
+         <p><%= link_to "削除",f, method: :delete,
+                                       data: { confirm: "You sure?" }  %></p>
+        <% end %> 
+      </div>
+      <% end %>
+      <div>
+        <h1>カテゴリー設定なし</h1>
+        <% @category_null_posts.each do  |post| %>
+         <p><%= link_to post.title,post.url %></p>
+         <p><%= link_to "削除",post, method: :delete,
+                                       data: { confirm: "You sure?" }  %></p>
+        <% end %>
+      </div>    
+     </div>
+     
 　　<div>
 　　 <aside>
 　　  <section>

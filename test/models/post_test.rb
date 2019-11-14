@@ -3,7 +3,8 @@ require 'test_helper'
 class PostTest < ActiveSupport::TestCase
   def setup
     @user=users(:michael)
-    @post=@user.posts.new(title: "aaa",url: "aaaaa")
+    @category=categories(:study)
+    @post=@user.posts.new(title: "aaa",url: "aaaaa",category_id: @category.id)
   end
   test "should be valid" do
     assert @post.valid?
@@ -16,7 +17,9 @@ class PostTest < ActiveSupport::TestCase
     @post.url="   "
     assert_not @post.valid?
   end
+
   test "order should be most recent first" do
     assert_equal posts(:most_recent), Post.first
   end
+  
 end

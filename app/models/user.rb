@@ -8,9 +8,6 @@ class User < ApplicationRecord
     has_many :posts, dependent: :destroy
     has_many :categories, dependent: :destroy
     
-    def feed
-        Post.where("user_id=?",id)
-    end
     
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
