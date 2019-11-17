@@ -1,6 +1,6 @@
 <%= form_for(@category) do |f| %>
-  <div>
+  <div class="postform-control">
     <%= f.text_area :name, placeholder: "text" %>
   </div>
-  <%= f.submit "追加"%>
+  <div class="postbtn-control"><%= f.submit "追加",class: "btn btn-primary"%></div>
 <% end %>

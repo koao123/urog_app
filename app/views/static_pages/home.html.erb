@@ -1,49 +1,81 @@
 <% if logged_in? %>
- <div>
-  <div class="container">
-    <aside>
-      <section>
-        <%= render 'shared/post_form' %>
-      </section>
-    </aside>
-    
-    <%# ここから作る　%>
-    <div>
-     <% @categories.each do |category|  %>
-      <div>
-      <h1><%= category.name %></h1>
-        <% category.posts.each do |f| %>
-         <p><%= link_to f.title,f.url %></p>
-         <p><%= link_to "削除",f, method: :delete,
-                                       data: { confirm: "You sure?" }  %></p>
-        <% end %> 
+  <div id="content">
+    <div class="board-main-content">
+        
+      <div class="postbox-wrapper">
+        <div class="postbox">
+          <div class="postbox-title">保存URLを追加する</div>
+          <%= render 'shared/post_form' %>
+        </div>
+      </div>   
+       <% @categories.each do |category|  %>
+       <div class="list-wrapper">
+            <div class="list">
+              <div class="list-header"><%= category.name %></div>
+              <div class="list-cards">
+               <% category.posts.each do |f| %>
+               <div class="list-card">
+                 <div class="list-card-details">       
+                   <div class="list-card-title">
+                    <%= link_to f.title,f.url %>
+                   </div>
+                   <div class="list-card-under">
+                     <div class="list-card-url"><%= link_to f.url,f.url %></div>
+                     <div class="list-card-delete"><%= link_to "削除",f, method: :delete,
+                                       data: { confirm: "You sure?" }  %></div>
+                   </div>
+                 </div>
+                 
+                 
+               </div>
+               <% end %>
+               </div>
+            </div>
+          </div>
+       <% end %>
+      <div class="list-wrapper">
+            <div class="list">
+              <div class="list-header">カテゴリー設定なし</div>
+              <div class="list-cards">
+               <% @category_null_posts.each do  |post| %>
+                 <div class="list-card">
+                   <div class="list-card-details">       
+                     <div class="list-card-title">
+                       <%= link_to post.title,post.url %>
+                     </div>
+                     <div class="list-card-under">
+                       <div class="list-card-url"><%= link_to post.url,post.url %></div>
+                       <div class="list-card-delete"><%= link_to "削除",post, method: :delete,
+                                       data: { confirm: "You sure?" }  %></div>
+                     </div>
+                     
+                   </div>
+                 </div>
+               <% end %>
+              </div>
+            </div>   
+          </div>
+      <div class="category-postbox-wrapper">
+        <div class="category-post-box">
+         <div class="postbox-title">＋カテゴリーを追加する</div>
+         <%= render 'shared/category_form' %>
+        </div>
+        <div class="category-deletebox">
+          <div class="postbox-title">ー カテゴリーを削除する</div>
+          <div class="category-deletebox-cards">
+           <% @categories.each do |category|  %>
+            <div class="category-deletebox-card">
+              <div class="category-deletebox-card-details">
+                <div class="category-deletebox-card-title"><%= category.name %></div>
+                <div class="category-deletebox-card-delete"> <%= link_to "削除",category, method: :delete,
+                                       data: { confirm: "カテゴリー内のURLは全て消えてしまいますがよろしいですか？" }  %></div>
+              </div>
+            </div>
+           <% end %>  
+          </div>
+        </div>
       </div>
-      <% end %>
-      <div>
-        <h1>カテゴリー設定なし</h1>
-        <% @category_null_posts.each do  |post| %>
-         <p><%= link_to post.title,post.url %></p>
-         <p><%= link_to "削除",post, method: :delete,
-                                       data: { confirm: "You sure?" }  %></p>
-        <% end %>
-      </div>    
-     </div>
-     
-　　<div>
-　　 <aside>
-　　  <section>
-        <%= render 'shared/category_form' %>
-      </section>
-     <aside>
-      <h3>カテゴリー</h3>
-      <% @categories.each do |category|  %>
-      <div><%= category.name %>
-      <%= link_to "削除",category, method: :delete,
-                                       data: { confirm: "You sure?" }  %>
-      </div>
-      <% end %>
-    </div>    
-   </div>
+    </div>
   </div>
 <% else %>
    <div class="container">

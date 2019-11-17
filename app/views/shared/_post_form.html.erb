@@ -1,13 +1,13 @@
 <%= form_with model: @post,local: true do |f| %>
 　<%= render 'shared/error_messages', object: f.object %>
-  <div>
-    <%= f.text_area :title, placeholder: "text" %>
+  <div class="postform-control">
+    <%= f.text_area :url, placeholder: "URLはここへ" %>
   </div>
-  <div>
-    <%= f.text_area :url, placeholder: "url" %>
+  <div class="postform-control">
+    <%= f.text_area :title, placeholder: "タイトル" %>
   </div>
-  <div>
-    <%= f.collection_select(:category_id,@categories,:id,:name,:prompt => "未選択") %>
+  <div class="postform-control">
+    <%= f.collection_select(:category_id,@categories,:id,:name,{prompt:"未選択"},{class: "cp_ipselect cp_sl01"})%>
   </div>
-  <%= f.submit "追加"%>
+  <div class="postbtn-control"><%= f.submit "追加",class: "btn btn-primary"%></div>
 <% end %>
