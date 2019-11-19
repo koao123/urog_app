@@ -1,20 +1,19 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
-
-      <%= f.label :name ,"ユーザー名" %>
-      <%= f.text_field :name %>
-
+      <div class="form-group">
+        <%= f.label :name ,"ユーザー名" %>
+        <%= f.text_field :name,class:"form-control",placeholder: "例)user1"  %>
+      </div>
+      <div class="form-group">
       <%= f.label :email , "メールアドレス" %>
-      <%= f.text_field :email %>
-      
+      <%= f.text_field :email ,class:"form-control",placeholder: "PC・携帯どちらでも可" %>
+      </div>
+      <div class="form-group">
       <%= f.label :password , "パスワード" %>
-      <%= f.text_field :password %>
-      
+      <%= f.text_field :password ,class:"form-control",placeholder: "7文字以上" %>
+      </div>
+      <div class="form-group">
       <%= f.label :password_confirmation, "パスワード(確認)" %>
-      <%= f.text_field :password_confirmation %>
-      
-      <%= f.submit %>
+      <%= f.text_field :password_confirmation,class:"form-control",placeholder: "もう一度お願いします"  %>
+      </div>
+      <%= f.submit "ユーザー登録" , class: "btn btn-primary"%>
     <% end %>
-  </div>
-</div>

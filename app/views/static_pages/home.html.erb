@@ -78,13 +78,30 @@
     </div>
   </div>
 <% else %>
-   <div class="container">
-    <h1>Welcome to urog</h1>
-    <h2>
-      urogは保存しておきたいwebサイトを見やすく保管するためのツールです。
-    </h2>
-    <p><%= link_to "登録する",new_user_path%></p>
-    <p>すでにアカウントをお持ちの方は
-    <%= link_to "こちら",login_path %></p>
+   <div id="before-login-main">
+       <div class="container">
+           <div class="inner">
+             <h1>UROGは未来のあなたに知識を与えるアプリです</h1>
+             <h3>Webサイトを保存してあなただけの辞書を作りましょう。</h3>
+             <p><%= link_to "無料でアカウントを作ってみる",new_user_path ,class: "btn btn-primary"%></p>
+             <p>すでにアカウントをお持ちの方は<%= link_to "ログイン",login_path %></p>
+            </div>
+       </div>
+   </div>
+   <div id="app-features">
+       <div class="features-wrp row">
+           <div class="sub-contents col-md-6">
+               <div class="text-contents">
+                  <h2>「あの時のために」をサポート</h2>
+                  <p>いつか役立つかもしれないあの記事も、何度も読みたいこの記事も、すべてUROGに保存できます。</p>
+               </div>
+           </div>
+           <div class="sub-contents col-md-6">
+               <div class="text-contents">
+                  <h2>すべての情報をひとめで</h2>
+                  <p>カテゴリー毎に分けることができ、一覧で見れるので、あの記事を探すときも安心！</p>
+               </div>
+           </div>
+       </div>
    </div>
 <% end %>
